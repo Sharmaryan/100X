@@ -29,6 +29,7 @@ function userExists(username, password) {
   );
   return ifExist ? true : false;
 }
+console.log('false commit')
 
 app.post("/signin", function (req, res) {
   const username = req.body.username;
