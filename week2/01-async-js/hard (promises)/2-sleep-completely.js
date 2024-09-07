@@ -5,6 +5,13 @@
  */
 
 function sleep(milliseconds) {
+
+    var date = new Date();
+    while ((new Date()) - date <= milliseconds) { }
+    return new Promise((resolve) => {
+        return resolve()
+    })
+    console.log('thread started')
 }
 
 module.exports = sleep;
