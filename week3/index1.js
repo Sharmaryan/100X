@@ -1,6 +1,15 @@
 const express = require('express')
 const app = express()
 
+let numberOfRequests = 0
+const calculateRequest = (_, _, next) => {
+    numberOfRequests++
+    console.log(numberOfRequests)
+    next()
+}
+
+app.use(calculateRequest)
+
 app.get('/health-checkup', (req, res) => {
     const username = req.headers.username
     const password = req.headers.password
