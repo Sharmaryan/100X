@@ -84,6 +84,23 @@ app.delete('/todos/:id', (req, res) => {
   })
 })
 
+app.put('/todos/:id', (req, res) => {
+  const item = req.body
+  const id = req.params.id
+  fs.readFile('todos.json', 'utf-8', (err, data) => {
+    const todos = JSON.parse(data)
+    const foundItem = todos.map((item) => item.id === id) ? [...todos] : [...item]
+    if (!err) {
+      if (foundItem) {
+        res.status(200).json(item)
+      }
+      else {
+        res.status(404).send('Not Found')
+      }
+    }
+  })
+})
+
 app.post('/todos', (req, res) => {
   const item = req.body
 
