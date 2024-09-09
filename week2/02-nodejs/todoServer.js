@@ -66,5 +66,20 @@ app.get('/todos/:id', (req, res) => {
     }
   })
 })
+app.delete('/todos/:id', (req, res) => {
+  const id = req.params.id
+
+  fs.readFile('todos.json', 'utf-8', (err, data) => {
+    const todos = JSON.parse(data)
+    const foundItem = todos.filter((item) => item.id === id)
+    if (foundItem) {
+      const remainingItems = todos.filter((item) => item.id !== id)
+      res.status(200).json(remainingItems)
+    }
+    else {
+      res.status(404).send('Not Found')
+    }
+  })
+})
 // app.listen(3000)
 module.exports = app;
