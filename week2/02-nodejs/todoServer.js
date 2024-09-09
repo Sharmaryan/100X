@@ -54,5 +54,17 @@ app.get('/todos', (_, res) => {
     }
   })
 })
+app.get('/todos/:id', (req, res) => {
+  const id = req.params.id
+  fs.readFile('todos.json', 'utf-8', (err, data) => {
+    const todos = JSON.parse(data)
+    if (err) {
+      res.status(404).send('Not Found')
+    }
+    else {
+      res.status(200).send(todos.filter((item) => item.id === id))
+    }
+  })
+})
 // app.listen(3000)
 module.exports = app;
