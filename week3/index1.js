@@ -1,28 +1,16 @@
 const express = require('express')
 const app = express()
+app.use(express.json())
 
-let numberOfRequests = 0
-const calculateRequest = (_, _, next) => {
-    numberOfRequests++
-    console.log(numberOfRequests)
-    next()
-}
+app.post('/health-checkup', (req, res) => {
+    const kidneys = req.body.kidneys
+    const kidneyLength = kidneys.length
+    res.send('you have ' + kidneyLength + ' kidneys')
 
-app.use(calculateRequest)
+})
 
-app.get('/health-checkup', (req, res) => {
-    const username = req.headers.username
-    const password = req.headers.password
-    const kidneyId = req.query.kidneyId
-    if (username != 'aryan' || password != 'pass') {
-        res.status(404).json({ 'msg': 'Invalid inputs' })
-        return
-    }
-    if (kidneyId != 1 && kidneyId != 2) {
-        res.status(404).json({ 'msg': 'Invalid inputs' })
-        return
-    }
-    res.json({ msg: 'Your kidney is fine' })
+app.use((err, req, res, next) => {
+    res.json({msg:'something went wrong'})
 })
 
 app.listen(3000)
