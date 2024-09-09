@@ -50,7 +50,7 @@ app.use(bodyParser.json());
 app.get('/todos', (_, res) => {
   fs.readFile('todos.json', 'utf-8', (err, data) => {
     if (!err) {
-      return res.status(200).json(JSON.parse(data))
+      return res.status(200).send(data)
     }
   })
 })
