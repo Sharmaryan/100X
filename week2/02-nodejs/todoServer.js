@@ -42,6 +42,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
+const { randomUUID: uuid } = require('crypto');
 
 const app = express();
 
@@ -56,13 +57,14 @@ app.get('/todos', (_, res) => {
 })
 app.get('/todos/:id', (req, res) => {
   const id = req.params.id
-  fs.readFile('todos.json', 'utf-8', (err, data) => {
+  fs.readFile('todos.json', 'utf-8', (_, data) => {
     const todos = JSON.parse(data)
-    if (err) {
+    const items = todos.filter((item) => item.id === id)
+    if (items.length <= 0) {
       res.status(404).send('Not Found')
     }
     else {
-      res.status(200).send(todos.filter((item) => item.id === id))
+      res.status(200).send(items)
     }
   })
 })
@@ -79,6 +81,21 @@ app.delete('/todos/:id', (req, res) => {
     else {
       res.status(404).send('Not Found')
     }
+  })
+})
+
+app.post('/todos', (req, res) => {
+  const item = req.body
+
+  fs.readFile('todos.json', 'utf-8', (err, data) => {
+    const itemToBeAdded = [item]
+
+    const randomId = uuid()
+    if (!err) {
+      JSON.parse(data).push([...itemToBeAdded, randomId])
+      res.status(201).json({ id: randomId })
+    }
+
   })
 })
 // app.listen(3000)
