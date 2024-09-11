@@ -37,7 +37,13 @@ function signJwt(username, password) {
  *                    using the secret key.
  */
 function verifyJwt(token) {
-    // Your code here
+    try {
+        jwt.verify(token, jwtPassword)
+        return true
+    }
+    catch (err) {
+        if (err) return false
+    }
 }
 
 /**
@@ -55,16 +61,12 @@ function decodeJwt(token) {
     else {
         return false
     }
-
-
 }
 
-// signJwt('aryan@gmail.com', '123456')
-console.log(decodeJwt('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFyeWFuQGdtYWlsLmNvbSIsImlhdCI6MTcyNjA1MTIzM30.BF3R6r8NXCLrybaXN0zTbFfrMp2-uD5VCDHr1qXIJqo'))
 
-// module.exports = {
-//   signJwt,
-//   verifyJwt,
-//   decodeJwt,
-//   jwtPassword,
-// };
+module.exports = {
+    signJwt,
+    verifyJwt,
+    decodeJwt,
+    jwtPassword,
+};
