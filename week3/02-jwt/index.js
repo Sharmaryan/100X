@@ -48,10 +48,19 @@ function verifyJwt(token) {
  *                         Returns false if the token is not a valid JWT format.
  */
 function decodeJwt(token) {
-    // Your code here
+    const isTokenDecoded = jwt.decode(token)
+    if (isTokenDecoded) {
+        return true
+    }
+    else {
+        return false
+    }
+
+
 }
 
-signJwt('aryan@gmail.com', '123456')
+// signJwt('aryan@gmail.com', '123456')
+console.log(decodeJwt('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFyeWFuQGdtYWlsLmNvbSIsImlhdCI6MTcyNjA1MTIzM30.BF3R6r8NXCLrybaXN0zTbFfrMp2-uD5VCDHr1qXIJqo'))
 
 // module.exports = {
 //   signJwt,
