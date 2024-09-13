@@ -5,41 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script>
-      let globalId = 0;
-
-      function handleTodo(id) {
-        const children = document.getElementById(id);
-        children.innerHTML = 'done'
-      }
-
-      function createChild(title, description, globalId) {
-        const children = document.createElement("div");
-        const grandChildren1 = document.createElement("div");
-        const grandChildren2 = document.createElement("div");
-        const grandChildren3 = document.createElement("button");
-        grandChildren3.setAttribute("onclick", `handleTodo(${globalId})`);
-        grandChildren3.setAttribute("id", globalId);
-        grandChildren1.append(title);
-        grandChildren2.append(description);
-        grandChildren3.append("marks as done");
-        children.appendChild(grandChildren1);
-        children.appendChild(grandChildren2);
-        children.appendChild(grandChildren3);
-        return children;
-      }
-
-      function addToDo() {
-        const title = document.getElementById("title").value;
-        const description = document.getElementById("description").value;
-        const container = document.getElementById("container");
-        container.append(createChild(title, description, globalId++));
+      function populateDiv() {
+        const a = document.getElementById("firstNumber").value;
+        const b = document.getElementById("secondNumber").value;
+        const element = document.getElementById("finalSum");
+        element.innerHTML = parseInt(a) + parseInt(b);
       }
     </script>
   </head>
   <body>
-    <input id="title" type="text" placeholder="title" />
-    <input id="description" type="text" placeholder="description" />
-    <button onclick="{addToDo()}">add todo</button>
-    <div id="container"></div>
+    <input id="firstNumber" type="text" placeholder="first number" /> <br />
+    <br />
+    <input id="secondNumber" type="text" placeholder="second number" /> <br />
+    <br />
+    <button onclick="populateDiv()">calculate sum</button> <br />
+    <div id="finalSum"></div>
   </body>
 </html>
