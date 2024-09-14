@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const router = Router();
 const userMiddleware = require("../middleware/user");
-const { User } = require("../db");
+const { User, Course } = require("../db");
 
 // User Routes
 router.post('/signup', async (req, res) => {
@@ -15,11 +15,13 @@ router.post('/signup', async (req, res) => {
             res.json({ message: 'User created successfully' })
         }
     }
-    // Implement user signup logic
 });
 
-router.get('/courses', (req, res) => {
-    // Implement listing all courses logic
+router.get('/courses', userMiddleware, async (req, res) => {
+    const listOfCourses = await Course.find({})
+    if (!!listOfCourses.length) {
+        res.send(listOfCourses)
+    }
 });
 
 router.post('/courses/:courseId', userMiddleware, (req, res) => {
