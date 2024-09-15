@@ -5,8 +5,9 @@ async function userMiddleware(req, res, next) {
     const password = req.headers.password
     const payload = { username, password }
     if (username && password) {
-        const admin = await User.findOne(payload)
-        if (admin?.id) {
+        const user = await User.findOne(payload)
+        if (user?.id) {
+            res.locals.user = user
             next()
         }
         else {
