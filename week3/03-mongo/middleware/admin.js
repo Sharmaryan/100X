@@ -11,7 +11,7 @@ async function adminMiddleware(req, res, next) {
             next()
         }
         else {
-            res.send('user not found, try again')
+            res.send('admin not found, try again')
         }
     }
 }
