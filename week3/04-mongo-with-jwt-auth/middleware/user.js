@@ -1,6 +1,16 @@
+// will remove later
+const SECRET_KEY = 'hey_secret'
+const jwt = require('jsonwebtoken');
+
 function userMiddleware(req, res, next) {
-    // Implement user auth logic
-    // You need to check the headers and validate the user from the user DB. Check readme for the exact headers to be expected
+    let token = req.headers['authorization']
+    token = token.replace(/^Bearer\s+/, "");
+    if (token) {
+        const data = jwt.verify(token, SECRET_KEY)
+        res.locals.username = data
+        next();
+    }
+
 }
 
 module.exports = userMiddleware;
