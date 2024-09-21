@@ -1,35 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
+import { Dashboard } from "./components/Dashboard";
+import { Landing } from "./components/Landing";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div>
+      <BrowserRouter>
+        <AppBar />
+        <Routes>
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/" element={<Landing />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
+  );
 }
 
-export default App
+function AppBar() {
+  const navigate = useNavigate();
+  return (
+    <div>
+      <button
+        onClick={() => {
+          navigate("/");
+        }}
+      >
+        Landing Page
+      </button>
+      <button
+        onClick={() => {
+          navigate("/dashboard");
+        }}
+      >
+        Dashboard Page
+      </button>
+    </div>
+  );
+}
+
+export default App;
