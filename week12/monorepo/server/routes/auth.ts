@@ -2,13 +2,6 @@ import jwt from "jsonwebtoken";
 import express from 'express';
 import { authenticateJwt, SECRET } from "../middleware/";
 import { User } from "../db";
-import { z } from "zod";
-
-const signupInput = z.object({
-  username: z.string(),
-  password: z.string()
-})
-type SignupParams = z.infer<typeof signupInput>
 
 const router = express.Router();
 
