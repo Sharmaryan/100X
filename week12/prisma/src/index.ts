@@ -15,16 +15,33 @@ const prisma = new PrismaClient()
 
 // insertUser('test2', 'test2', 'test2', 'test2')
 
-async function createTodo() {
-    const response = await prisma.todos.create({
-        data: {
-            userId: 1,
-            title: 'nothing',
-            description: 'nothing',
-            done: true
+// async function createTodo() {
+//     const response = await prisma.todos.create({
+//         data: {
+//             userId: 1,
+//             title: 'nothing',
+//             description: 'nothing',
+//             done: true
+//         }
+//     })
+//     console.log(response)
+// }
+
+// createTodo()
+
+async function getTodo() {
+    const response = await prisma.todos.findMany({
+        where: {
+            userId: 1
+        },
+        select: {
+           id: true,
+           title: true,
+           description: true,
+           user: true
         }
     })
     console.log(response)
 }
 
-createTodo()
+getTodo()

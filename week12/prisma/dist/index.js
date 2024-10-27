@@ -22,17 +22,32 @@ const prisma = new client_1.PrismaClient();
 //     console.log(response)
 // }
 // insertUser('test2', 'test2', 'test2', 'test2')
-function createTodo() {
+// async function createTodo() {
+//     const response = await prisma.todos.create({
+//         data: {
+//             userId: 1,
+//             title: 'nothing',
+//             description: 'nothing',
+//             done: true
+//         }
+//     })
+//     console.log(response)
+// }
+// createTodo()
+function getTodo() {
     return __awaiter(this, void 0, void 0, function* () {
-        const response = yield prisma.todos.create({
-            data: {
-                userId: 1,
-                title: 'nothing',
-                description: 'nothing',
-                done: true
+        const response = yield prisma.todos.findMany({
+            where: {
+                userId: 1
+            },
+            select: {
+                id: true,
+                title: true,
+                description: true,
+                user: true
             }
         });
         console.log(response);
     });
 }
-createTodo();
+getTodo();
