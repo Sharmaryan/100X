@@ -1,11 +1,11 @@
-import { Counter } from "./components/counter";
-import { Greet } from "./components/greet";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <Greet />
-      <Counter />
-    </div>
+    <>
+      <h1>Welcome Home</h1>
+      <Link href="/blog">Blog</Link><br></br><br></br>
+      <Link href="/products">Products</Link>
+    </>
   );
 }
