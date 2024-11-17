@@ -1,5 +1,9 @@
 import { notFound } from "next/navigation";
 
+function getRandomInt(count: number) {
+  return Math.floor(Math.random() * count)
+}
+
 export default async function ProductDetails({
   params,
 }: {
@@ -9,6 +13,11 @@ export default async function ProductDetails({
   };
 }) {
   const { reviewId, productId } = await params;
+
+  const count = getRandomInt(2)
+  if(count === 1){
+    throw new Error('Error loading reveiw')
+  }
   if(parseInt(reviewId) > 1000){
     notFound()
   }
