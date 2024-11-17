@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 
-function getRandomInt(count: number) {
+export function getRandomInt(count: number) {
   return Math.floor(Math.random() * count)
 }
 
