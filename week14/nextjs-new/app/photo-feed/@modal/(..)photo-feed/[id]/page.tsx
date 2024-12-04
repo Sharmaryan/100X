@@ -2,12 +2,13 @@ import Image from "next/image";
 import wondersImages, { WonderImage } from "../../../mock";
 import Modal from "../../../../components/modal";
 
-export default function PhotoModal({
-  params: { id },
+export default async function PhotoModal({
+  params,
 }: {
   params: { id: string };
 }) {
-  const photo: WonderImage = wondersImages.find((p) => p.id === id)!;
+  const { id } = await params
+  const photo: WonderImage = wondersImages.find(p => p.id === id)!;
 
   return (
     <Modal>

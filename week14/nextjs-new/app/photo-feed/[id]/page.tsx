@@ -1,11 +1,12 @@
 import Image from "next/image";
 import wondersImages, { WonderImage } from "../mock";
 
-export default function PhotoPage({
-  params: { id },
+export default async function PhotoPage({
+  params,
 }: {
   params: { id: string };
 }) {
+  const {id} = await params
   const photo: WonderImage = wondersImages.find((p) => p.id === id)!;
   return (
     <div className="container mx-auto my-10">
