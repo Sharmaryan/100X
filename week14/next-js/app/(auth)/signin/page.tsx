@@ -1,9 +1,11 @@
 import { SigninComponent } from "../../../components/Signin";
 
-export default function () {
+const page = async() => {
   return (
     <SigninComponent />
   );
 }
+
+export default page
 
 

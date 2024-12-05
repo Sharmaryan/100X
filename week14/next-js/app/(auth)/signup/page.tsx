@@ -1,3 +1,4 @@
-export default function () {
+const page = async() => {
   return <div>Signup</div>;
 }
+export default page

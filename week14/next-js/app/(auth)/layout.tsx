@@ -1,4 +1,4 @@
-export default function ({ children }: { children: React.ReactNode }) {
+const page = async({ children }: { children: React.ReactNode }) =>{
   return (
     <div>
       <div className="border-b text-center">20% off for the next 3 days</div>
@@ -6,3 +6,5 @@ export default function ({ children }: { children: React.ReactNode }) {
     </div>
   );
 }
+
+export default page
