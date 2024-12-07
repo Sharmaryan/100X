@@ -1,0 +1,1 @@
+export const DEFAULT_PORT = 'localhost:3000'
