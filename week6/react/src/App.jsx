@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import './App.css'
 // import { Header } from './components/Header'
-import { Todo } from './components/Todo'
+// import { Todo } from './components/Todo'
+import { CardColorChanger } from './components/CardColorChanger'
 
 function App() {
   // const [title, setTitle] = useState('header 1')
@@ -25,13 +26,14 @@ function App() {
 
   return (
     <div>
-      <button onClick={() => {
+      <CardColorChanger />
+      {/* <button onClick={() => {
         setTodos([...todos, {
           id: Math.random() + 1,
           title: 'gym' + ' ' + Math.random(),
           description: 'description' + ' ' + Math.random(),
         }])
-      }}>click to change the title</button>
+      }}>click to change the title</button> */}
 
       {/* to see memo in action uncomment this */}
       {/* <button onClick={() => {
@@ -43,9 +45,9 @@ function App() {
       <Header title='header 2' />
       <Header title='header 2' /> */}
 
-      {todos.map((todo) => {
+      {/* {todos.map((todo) => {
         return <Todo {...todo} key={todo.id}/>
-      })}
+      })} */}
     </div>
   )
 }
