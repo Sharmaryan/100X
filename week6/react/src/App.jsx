@@ -3,6 +3,7 @@ import './App.css'
 // import { Header } from './components/Header'
 // import { Todo } from './components/Todo'
 import { CardColorChanger } from './components/CardColorChanger'
+import { CountEverySecond } from './components/CountEverySecond'
 
 function App() {
   // const [title, setTitle] = useState('header 1')
@@ -26,7 +27,8 @@ function App() {
 
   return (
     <div>
-      <CardColorChanger />
+      {/* <CardColorChanger /> */}
+      <CountEverySecond />
       {/* <button onClick={() => {
         setTodos([...todos, {
           id: Math.random() + 1,
