@@ -4,6 +4,8 @@ import './App.css'
 // import { Todo } from './components/Todo'
 import { CardColorChanger } from './components/CardColorChanger'
 import { CountEverySecond } from './components/CountEverySecond'
+import { MouseTracker } from './components/MouseTracker'
+import { Toggle } from './components/Toggle'
 
 function App() {
   // const [title, setTitle] = useState('header 1')
@@ -27,8 +29,15 @@ function App() {
 
   return (
     <div>
+      {/* <MouseTracker render={({x,y}) => (<p>The mouse position is ({x}, {y})</p>)}/> */}
+      <Toggle render={(on, handleToggle) => {
+        return <div>
+          <div>{on ? 'ON' : 'OFF'}</div>
+          <button onClick={handleToggle}>{on ? 'OFF' : 'ON'}</button>
+        </div>
+      }} />
       {/* <CardColorChanger /> */}
-      <CountEverySecond />
+      {/* <CountEverySecond /> */}
       {/* <button onClick={() => {
         setTodos([...todos, {
           id: Math.random() + 1,
