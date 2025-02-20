@@ -6,36 +6,38 @@ import { CardColorChanger } from './components/CardColorChanger'
 import { CountEverySecond } from './components/CountEverySecond'
 import { MouseTracker } from './components/MouseTracker'
 import { Toggle } from './components/Toggle'
+import { HighOrderComponent } from './components/HighOrderComponent'
 
 function App() {
   // const [title, setTitle] = useState('header 1')
 
-  const [todos, setTodos] = useState([{
-    id: 1,
-    title: 'gym',
-    description: 'gym jaao'
-  },
-  {
-    id: 2,
-    title: 'gym 2',
-    description: 'gym jaao 2'
-  },
-  {
-    id: 3,
-    title: 'gym 3',
-    description: 'gym jaao 3'
-  }
-  ])
+  // const [todos, setTodos] = useState([{
+  //   id: 1,
+  //   title: 'gym',
+  //   description: 'gym jaao'
+  // },
+  // {
+  //   id: 2,
+  //   title: 'gym 2',
+  //   description: 'gym jaao 2'
+  // },
+  // {
+  //   id: 3,
+  //   title: 'gym 3',
+  //   description: 'gym jaao 3'
+  // }
+  // ])
 
   return (
     <div>
+    <HighOrderComponent title='world'/>
       {/* <MouseTracker render={({x,y}) => (<p>The mouse position is ({x}, {y})</p>)}/> */}
-      <Toggle render={(on, handleToggle) => {
+      {/* <Toggle render={(on, handleToggle) => {
         return <div>
           <div>{on ? 'ON' : 'OFF'}</div>
           <button onClick={handleToggle}>{on ? 'OFF' : 'ON'}</button>
         </div>
-      }} />
+      }} /> */}
       {/* <CardColorChanger /> */}
       {/* <CountEverySecond /> */}
       {/* <button onClick={() => {
